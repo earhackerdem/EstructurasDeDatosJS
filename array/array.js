@@ -23,7 +23,7 @@ class MyArray {
         return lastItem;
     }
 
-    delete(index) { 
+    delete(index) {
         const item = this.data[index];
         this.shiftIndex(index);
         return item;
@@ -37,6 +37,18 @@ class MyArray {
         this.length--;
     }
 
+    shift() {
+        this.delete(0);
+    }
+
+    unshift(item) {
+        for (let i = this.length; i > 0; i--) {
+            this.data[i] = this.data[i - 1];
+        }
+        this.data[0] = item;
+        this.length++;
+        return this.data;
+    }
 
 }
 
