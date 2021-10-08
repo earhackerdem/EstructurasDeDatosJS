@@ -58,6 +58,25 @@ class MySinglyLinkedList {
         return currentNode;
     }
 
+    remove(index) {
+        if (index >= this.length) {
+            console.log("El indice no existe")
+            return
+        }
+
+        if (index === 0) {
+            this.head = this.head.next;
+            this.length--;
+            return this;
+        }
+        const previousPointer = this.getTheIndex(index - 1);
+        const nextPointer = this.getTheIndex(index + 1);
+        previousPointer.next = nextPointer;
+        this.length--;
+        return this;
+
+    }
+
 }
 
 let myLinkedList = new MySinglyLinkedList(1);
