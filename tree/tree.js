@@ -37,6 +37,40 @@ class BinarySearchTree {
             }
         }
     }
+
+    search(value) {
+        if (this.root) {
+            let current = this.root;
+            while (current && current.value !== value) {
+                if (value < current.value) {
+                    current = current.left;
+                } else {
+                    current = current.right;
+                }
+            }
+            if (current === null) return "No se encuentra";
+            return current
+        } else {
+            throw new Error("The tree is empty");
+        }
+    }
+
+    recursiveSearch(value, tree = this.root) {
+
+        if (tree === null) {
+            return "El elemento no se encuentra.";
+        }
+        else if (value > tree.value) {
+            return this.recursiveSearch(value, tree.right);
+        }
+        else if (value < tree.value) {
+            return this.recursiveSearch(value, tree.left);
+        }
+        else {
+            return tree;
+        }
+
+    }
 }
 
-const tree = new BinarySearchThree();
+const tree = new BinarySearchTree();
